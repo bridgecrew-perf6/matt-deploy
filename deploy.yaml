@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: ashuapp1
-  name: ashuapp1
+    app: mattapp1
+  name: mattapp1
   namespace: matt
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ashuapp1
+      app: mattapp1
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: ashuapp1
+        app: mattapp1
     spec:
       containers:
       - image: dockerashu/ashumobi:appv1
@@ -24,4 +24,27 @@ spec:
         ports:
         - containerPort: 80
         resources: {}
+
+## Service
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mattsvc1
+  name: mattsvc1
+  namespace: matt
+spec:
+  ports:
+  - name: 1267-80
+    port: 1267
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: mattapp1
+  type: NodePort
+status:
+  loadBalancer: {}
 
