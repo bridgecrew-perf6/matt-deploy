@@ -5,6 +5,7 @@ metadata:
   labels:
     app: ashuapp1
   name: ashuapp1
+  namespace: matt
 spec:
   replicas: 1
   selector:
